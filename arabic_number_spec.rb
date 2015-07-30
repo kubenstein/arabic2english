@@ -44,5 +44,19 @@ RSpec.describe ArabicNumber do
       end
     end
 
+    it 'returns proper translations for not rounded 10s' do
+      {21 => 'twenty one',
+       32 => 'thirty two',
+       43 => 'forty three',
+       54 => 'fifty four',
+       65 => 'sixty five',
+       76 => 'seventy six',
+       87 => 'eighty seven',
+       98 => 'ninety eight'
+      }.each do |k, v|
+        expect(ArabicNumber.new(k).to_english).to eq v
+      end
+    end
+
   end
 end
