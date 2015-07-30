@@ -12,8 +12,9 @@ RSpec.describe ArabicNumber do
     end
   end
 
-  it 'returns proper translations for numbers 11-19' do
-    {11 => 'eleven',
+  it 'returns proper translations for numbers 10-19' do
+    {10 => 'ten',
+     11 => 'eleven',
      12 => 'twelve',
      13 => 'thirteen',
      14 => 'fourteen',
