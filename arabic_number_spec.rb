@@ -2,10 +2,6 @@ require './arabic_number.rb'
 
 RSpec.describe ArabicNumber do
 
-  it 'returns proper translations for 100' do
-    expect(ArabicNumber.new(100).to_english).to eq 'one hundred'
-  end
-
   it 'returns proper translations for numbers 0-9' do
     ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].each_with_index do |v, i|
       expect(ArabicNumber.new(i).to_english).to eq v
@@ -57,6 +53,21 @@ RSpec.describe ArabicNumber do
         expect(ArabicNumber.new(k).to_english).to eq v
       end
     end
+  end
 
+  it 'returns proper translations for 3-digit numbers' do
+    {100 => 'one hundred',
+     101 => 'one hundred one',
+     121 => 'one hundred twenty one',
+     232 => 'two hundreds thirty two',
+     343 => 'three hundreds forty three',
+     454 => 'four hundreds fifty four',
+     565 => 'five hundreds sixty five',
+     676 => 'six hundreds seventy six',
+     787 => 'seven hundreds eighty seven',
+     898 => 'eight hundreds ninety eight'
+    }.each do |k, v|
+      expect(ArabicNumber.new(k).to_english).to eq v
+    end
   end
 end
