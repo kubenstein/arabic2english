@@ -70,4 +70,21 @@ RSpec.describe ArabicNumber do
       expect(ArabicNumber.new(k).to_english).to eq v
     end
   end
+
+  it 'returns proper translations for 4-digit numbers' do
+    {1000 => 'one thousand',
+     1015 => 'one thousand fifteen',
+     1217 => 'one thousand two hundreds seventeen',
+     2327 => 'two thousands three hundreds twenty seven',
+     3438 => 'three thousands four hundreds thirty eight',
+     4549 => 'four thousands five hundreds forty nine',
+     5650 => 'five thousands six hundreds fifty',
+     6761 => 'six thousands seven hundreds sixty one',
+     7872 => 'seven thousands eight hundreds seventy two',
+     8983 => 'eight thousands nine hundreds eighty three'
+    }.each do |k, v|
+      expect(ArabicNumber.new(k).to_english).to eq v
+    end
+  end
+
 end
