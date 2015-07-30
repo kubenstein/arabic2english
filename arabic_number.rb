@@ -6,8 +6,7 @@ class ArabicNumber < Struct.new(:arabic_number)
   def to_english(number=arabic_number)
     return single_digit_number_name(number) if number.between?(0, 9)
     return teen_number_name(number) if number.between?(10, 19)
-    return tens_number_name(number) if (number%10 == 0) && number <100
-    return tens_combined_number_name(number) if (number%10 != 0) && number <100
+    return tens_combined_number_name(number) if number <100
     return x_digits_number_name(3, 'hundred', number) if number < 1000
     return x_digits_number_name(4, 'thousand', number) if number < 9999
   end
@@ -30,7 +29,9 @@ class ArabicNumber < Struct.new(:arabic_number)
   def tens_combined_number_name(number)
     dec = number/10*10
     rest = number%10
-    tens_number_name(dec) + ' ' + single_digit_number_name(rest)
+    result = tens_number_name(dec)
+    result += " #{single_digit_number_name(rest)}" if rest != 0
+    result
   end
 
   def x_digits_number_name(x, level_name, number)
