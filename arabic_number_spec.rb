@@ -12,9 +12,8 @@ RSpec.describe ArabicNumber do
     end
   end
 
-  it 'returns proper translations for numbers 10-19' do
-    {10 => 'ten',
-     11 => 'eleven',
+  it 'returns proper translations for numbers 11-19' do
+    {11 => 'eleven',
      12 => 'twelve',
      13 => 'thirteen',
      14 => 'fourteen',
@@ -26,5 +25,23 @@ RSpec.describe ArabicNumber do
     }.each do |k, v|
       expect(ArabicNumber.new(k).to_english).to eq v
     end
+  end
+
+  context 'for double digits numbers' do
+    it 'returns proper translations for 10s' do
+      {10 => 'ten',
+       20 => 'twenty',
+       30 => 'thirty',
+       40 => 'forty',
+       50 => 'fifty',
+       60 => 'sixty',
+       70 => 'seventy',
+       80 => 'eighty',
+       90 => 'ninety'
+      }.each do |k, v|
+        expect(ArabicNumber.new(k).to_english).to eq v
+      end
+    end
+
   end
 end
